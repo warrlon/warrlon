@@ -1,0 +1,21 @@
+# OneNET Video视频能力
+
+OneNET Video视频能力为用户提供物联网行业视频设备接入能力，方便快捷的接入使用流程，快速稳定的平台性能，低成本的使用方式，让物联网企业可以更加方便对视频业务进行开发，从而解决物联网视频行业的并发、分发的业务痛点
+
+## 快速入门
+
+通过阅读下列文档，您将能快速了解OneNET video视频能力
+
+- [了解OneNET Video视频能力整体功能](/book/introduce.md)
+
+- [OneNET Video视频能力平台使用](/book/control.md)
+
+- [OneNET Video视频能力API列表](/book/videoapi.md)
+
+- [OneNET Video视频能力SDK介绍](/book/sdk/sdk-menu.md)
+
+- [OneNET Video视频能力硬件介绍](/book/hardware/hardware-menu.md)
+
+- [OneNET Video视频能力视频教程](/book/demo.md)
+
+- [OneNET Video视频能力产品价格](/book/price.md)

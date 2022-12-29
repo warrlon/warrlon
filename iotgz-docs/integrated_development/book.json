@@ -1,0 +1,28 @@
+{
+    "root": "./",
+    "title": "行业开发平台开发者文档",
+    "head_title": "_行业开发平台开发者文档",
+    "head_description": "行业开发平台开发者文档",
+    "head_keywords": "hewu,行业开发平台",
+    "logo": "./images/logo.png",
+
+    "gitbook": ">= 3.0.0",
+
+    "language": "zh-hans",
+
+    "plugins": [
+        "-sharing",
+        "-fontsettings",
+        "-lunr",
+        "-search",
+        "search-pro",
+        "theme-official",
+        "sitemap-general"
+    ],
+
+    "pluginsConfig": {
+        "sitemap-general": {
+            "prefix": "https://open.iot.10086.cn/industrydevelop"
+        }
+    }
+}

@@ -1,0 +1,8 @@
+- [OneNET物联网平台](README.MD)
+- [平台简介](/book/introduce.md)
+- [资源模型](/book/resource-model.md)
+- [术语解释](/book/term.md)
+- [服务协议](README.md)
+    - [公测服务协议](/book/service-agreement.md)
+- [收费说明](/book/fee.md)
+- [下载专区](/book/download.md)

@@ -1,0 +1,73 @@
+# 机卡关系修改API
+
+请求方法：**PUT**
+
+URL：http://api.heclouds.com/dmc/dmc/ccmp/devicecard
+
+#### http头部
+参数名称 | 格式 | 是否必须 | 说明
+:- | :- | :- | :- 
+api-key | string | 是 | 必须为masterkey
+
+#### HTTP body 参数
+参数名称 | 格式 | 是否必须 | 说明
+:- | :- | :- | :- 
+data|json|是|机卡关系数据
+
+#### data描述表
+参数名称 | 格式 | 是否必须 | 说明
+:- | :- | :- | :- 
+deviceid|string|是|设备ID
+iccid|string|是|物联卡iccid号
+
+#### 返回参数
+参数名称|格式|说明
+:- | :- | :- 
+errno|int|调用错误码，为0表示调用成功
+error|string|错误描述，为"succ"表示调用成功
+data|json|批量机卡关系修改的结果详情
+
+#### data描述表
+参数名称|格式|说明
+:- | :- | :- 
+succ|int|该次请求中机卡绑定成功总数
+fail|int|该次请求中机卡绑定失败总数
+total|int|该次请求中机卡绑定的总数
+
+#### 请求头部示例
+```text
+PUT http://api.heclouds.com/dmc/dmc/ccmp/devicecard HTTP/1.1
+api-key: WhI3***************v1c=
+Host: api.heclouds.com
+```
+
+#### 请求参数示例
+```json
+{
+    "data":
+    [
+        {
+        "deviceid":"35282992",           //设备id
+        "iccid"："898602B2201720000126"  //物联卡iccid号
+        },
+        {
+        "deviceid":"35271941",
+        "iccid":"898602B0011489800002"
+        },
+        ...
+   ]
+}
+```
+#### 返回示例
+```json
+{
+"errno": 0,
+"error":"succ",
+"data":
+    {
+        "succ": 10,
+        "fail": 0,
+        "total": 10
+    }
+}
+```

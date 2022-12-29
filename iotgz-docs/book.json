@@ -1,0 +1,28 @@
+{
+    "root": "./",
+    "title": "开发者文档",
+    "head_title": "_开发者文档",
+    "head_description": "开发者文档",
+    "head_keywords": ",开发者文档",
+    "logo": "/images/OneNET_logo.png",
+
+    "gitbook": ">= 3.0.0",
+
+    "language": "zh-hans",
+    "plugins": [
+        "-sharing",
+        "-fontsettings",
+        "-lunr",
+        "-search",
+        "search-pro",
+        "theme-official",
+        "local-video",
+        "sitemap-general"
+    ],
+
+    "pluginsConfig": {
+        "sitemap-general": {
+            "prefix": "https://open.iot.10086.cn/doc"
+        }
+    }
+}

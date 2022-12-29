@@ -1,0 +1,495 @@
+{% extends "website/layout.html" %}
+
+{% block title %}{{ page.title }}{{ config.head_title }}{% endblock %}
+{% block description %}{{ config.head_description }}{% endblock %}
+
+{% block head %}
+    <meta name="keywords" content="{{ config.head_keywords }}">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="shortcut icon" href="/v4/static/common/file/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="{{ 'assets/website/font/iconfont.css'|resolveFile }}">
+    <script src="{{ 'assets/website/font/iconfont.js'|resolveFile }}"></script>
+    <link rel="stylesheet" href="{{ 'assets/website/page_custom.min.css'|resolveFile }}">
+    <link rel="stylesheet" href="{{ 'assets/website/page_global.css'|resolveFile }}">
+    {% if page.next and page.next.path %}
+    <link rel="next" href="{{ page.next.path|resolveFile }}" />
+    {% endif %}
+    {% if page.previous and page.previous.path %}
+    <link rel="prev" href="{{ page.previous.path|resolveFile }}" />
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+<div class="gb-page-wrapper">
+    {% include "website/header.html" %}
+    <div class="gb-page-body">
+        <div class="gb-page-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        {% include "website/sidenav.html" %}
+                    </div>
+                    <div class="col-md-9">
+                        <!-- search_result -->
+                        <div id="book-search-results">
+                            <div class="search-noresults">
+                                
+                                <!-- page -->
+                                {% block page %}
+                                <div class="gb-markdown book-page-inner page-inner">
+                                    {{ page.content|safe }}
+                                </div>
+                                {% endblock %}
+                                <!-- page -->
+
+                            </div>
+                            <div class="search-results">
+                                <div class="has-results">
+                                    {% block search_has_results %}
+                                    <h1 class="search-results-title"><span class="search-results-count"></span> 个搜索结果，搜索内容 “<span class="search-query"></span>”</h1>
+                                    <ul class="search-results-list"></ul>
+                                    {% endblock %}
+                                </div>
+                                <div class="no-results">
+                                    {% block search_no_results %}
+                                    <h1 class="search-results-title"><span class="search-results-count">0</span> 个搜索结果，搜索内容 “<span class="search-query"></span>”</h1>
+                                    {% endblock %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- search_result -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-wrapper">
+        <a href="/doc" class="link-item">
+            <span>开发文档</span>
+            <i class="iconfont icon-thin-arrow-right"></i>
+        </a>
+        <a href="/bbs" class="link-item">
+            <span>社区</span>
+            <i class="iconfont icon-thin-arrow-right"></i>
+        </a>
+        <a href="/introduce" class="link-item">
+            <span>认识OneNET</span>
+            <i class="iconfont icon-thin-arrow-right"></i>
+        </a>
+        
+        <div class="contract-box">
+        <div>
+            
+            <i class="iconfont icon-zixundianhua color999"></i>
+            <span>电话咨询</span>
+        </div>
+        <span class="color999">4001-100-868 转 3</span>
+        </div>
+        <!-- <p class="contract-text">OneNET QQ交流群：129735447</p>
+        <p class="contract-text">开发板 QQ交流群：562521394</p> -->
+        <p class="contract-text">产业合作：kfptbhezuo@cmiot.chinamobile.com</p>
+        <div class="qcode-box">
+        <div>
+            <div>关注OneNET</div>
+            <div class="qcode-desc">长按截图保存二维码</div>
+        </div>
+        <img
+            class="qcode-img"
+            src="{{ 'images/qcode.png'|resolveFile }}"
+            alt="二维码"
+        >
+        </div>
+        <img
+        class="bottom-logo"
+        src="{{ 'images/bottom-logo.png'|resolveFile }}"
+        alt="logo"
+        >
+        <p class="copyright">© 1999-<span id="copyright-year"></span> Copyright by China Mobile. All rights reserved</p>
+    </footer>
+    <div class="footer" style="display: none;">
+        <div class="footer-body">
+            <div class="footer-body-content">
+                <div class="footer-body-content-about">
+                    <span class="footer-body-content-title">关于我们</span>
+                    <div class="footer-b-c-b">
+                        <ul class="footer-b-c-u">
+                            <li class="footer-b-c-u-l">
+                                <a data-hmt-type="footer_30" href="/about/knowonenet/" target="_blank">认识OneNET</a>
+                            </li>
+                            <li class="footer-b-c-u-l">
+                                <a data-hmt-type="footer_31" target="_blank" href="http://iotchinamobile.zhiye.com/social">社会招聘</a>
+                            </li>
+                            <li class="footer-b-c-u-l">
+                                <a data-hmt-type="footer_31" target="_blank" href="http://iotchinamobile.zhiye.com/Campus">校园招聘</a>
+                            </li>
+                            <li class="footer-b-c-u-l">
+                                <a data-hmt-type="footer_31" target="_blank" href="http://iot.10086.cn/introduction/index/name/introduction">公司介绍</a>
+                            </li>
+                            <li class="footer-b-c-u-l">
+                                <a data-hmt-type="footer_29" href="/about/trustedCloud/" target="_blank"><img src="/v4/static/common/file/footer-cloud.svg" class="footer-b-c-u-l-i"/>可信云认证</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-body-content-developer">
+                    <span class="footer-body-content-title">开发者</span>
+                    <div class="footer-b-c-b">
+                        <ul class="footer-b-c-u">
+                            <li class="footer-b-c-u-l">
+                                <a data-hmt-type="footer_32" href="/doc" target="_blank">开发文档</a>
+                            </li>
+                            <li class="footer-b-c-u-l">
+                                <a data-hmt-type="footer_33" href="/about/serviceprot/" target="_blank">服务协议</a>
+                            </li>
+                            <li class="footer-b-c-u-l">
+                                <a data-hmt-type="footer_32" href="https://open.iot.10086.cn/login" target="_blank">立即登陆</a>
+                            </li>
+                            <li class="footer-b-c-u-l">
+                                <a data-hmt-type="footer_32" href="https://open.iot.10086.cn/doc/art656.html#118" target="_blank">设备云APP下载</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-body-content-contact">
+                    <span class="footer-body-content-title">联系方式</span>
+                    <div class="footer-b-c-b">
+                        <ul class="footer-b-c-u">
+                            <li class="footer-b-c-u-l">
+                                <span>Q 群：<a style="display: inline;" target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=2f4a73560e288fa55744b1569ad3dd1f799f5b9c5521d9f204b50ef5182b8c2c">OneNET - 751193591</a>    <a style="display: inline;" target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=1272299832d3798f4a408e3d5297f87b07744f81febe8d75ff992e804763004d">麒麟开发板 - 328700926</a></span>
+                            </li>
+                            <li class="footer-b-c-u-l">
+                                <span>电话：4001-100-868 转 3</span>
+                            </li>
+                            <li class="footer-b-c-u-l">
+                                <span>合作：<a style="display: inline;" href="mailto:kfptbhezuo@cmiot.chinamobile.com">kfptbhezuo@cmiot.chinamobile.com</a></span>
+                            </li>
+                            <li class="footer-b-c-u-l">
+                                <span>邮箱：<a style="display: inline;" href="mailto:iot_service@cmiot.chinamobile.com">iot_service@cmiot.chinamobile.com</a></span>
+                            </li>
+                            <li class="footer-b-c-u-l">
+                                <span>地址：重庆市渝北区杨柳北路8号V客部落D2A</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-body-content-qrcode">
+                    <span class="footer-body-content-title">微信公众号</span>
+                    <div class="footer-b-c-b">
+                        <p class="footer-b-c-b-r-p">关注OneNET</p>
+                        <div class="footer-b-c-b-r"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-body-lang">
+    
+                <div class="footer-body-lang-content">
+                    <ul>
+                        <li class="content-title">友情链接</li>
+                        <li><a href="http://iot.10086.cn/" target="_blank">中移物联网</a></li>
+                        <li><a href="http://ec.iot.10086.cn/" target="_blank">物联卡连接管理平台</a></li>
+                        <li><a href="https://open.10086.cn/" target="_blank">中国移动能力开放商店</a></li>
+                        <li><a href="http://open.home.10086.cn/dev/" target="_blank">数字家庭能力开放平台</a></li>
+                        <li><a href="http://labs.bigcloudsys.cn/" target="_blank">移动Labs</a></li>
+                        <li><a href="https://open.iot.10086.cn/ocp/welcome/addOcpIndex" target="_blank">友情链接申请>></a></li>
+                    </ul>
+                </div>
+                <div class="footer-body-lang-content">
+                    <ul>
+                        <li class="content-title">语言</li>
+                        <li><a href="">中文</a></li>
+                    </ul>
+                </div>
+                
+                <!--<a href="#">English</a>
+                <a href="#">русский</a>
+                <a href="#">Deutsch</a>
+                <a href="#">日本語</a>
+                <a href="#">Español</a>
+                <a href="#">español</a>-->
+            </div>
+            <div class="footer-body-copyright">
+                <p>Copyright©1999-2019 中国移动 版权所有 <a href="http://www.miitbeian.gov.cn/" target="_blank">京ICP备05002571号</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="suspension">
+        <div class="suspension-top">
+            <div class="suspension-item">
+                <span class="item-i"><i class="iconfont icon-feedback"></i></span>
+                <a data-hmt-type="suspension_34" class="item-text" target="_blank" href="/questionnaire/show/5641f96a2582e20ed2f0c6afac2de2b7">意见反馈</a>
+            </div>
+            <div class="suspension-item suspension-contact">
+                <span class="item-i"><i class="iconfont icon-contact"></i></span>
+                <a class="item-text" target="_blank" href="/smartanswer">智能客服</a>
+            </div>
+            <div class="suspension-item">
+                <span class="item-i"><i class="icon iconfont icon-joinus"></i></span>
+                <a data-hmt-type="suspension_35" class="item-text" target="_blank" href="http://iotchinamobile.zhiye.com/social?r=-1&p=&c=&d=&k=%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%E9%83%A8">加入我们</a>
+            </div>
+        </div>
+        <div class="suspension-bottom">
+            <i class="iconfont icon-backtop"></i>
+        </div>
+    </div>
+</div>
+
+<script src="{{ "gitbook.js"|resolveAsset }}"></script>
+{% for resource in plugins.resources.js %}
+    {% if resource.url %}
+    <script src="{{ resource.url }}"></script>
+    {% else %}
+    <script src="{{ resource.path|resolveAsset }}"></script>
+    {% endif %}
+{% endfor %}
+
+<script>
+    var gitbook = gitbook || [];
+    gitbook.push(function() {
+        gitbook.page.hasChanged({{ template.getJSContext()|dump|safe }});
+    });
+</script>
+<script>
+    <!-- 百度统计 -->
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fb3a66a8ee8dcd5e16c7cae035393beb";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script>
+    var _common = {
+        hmtAddContent: ['footer_27'],
+        baseUrl: '/wap/web',
+        menus:[
+          { title: "首页", link: "/home" },
+          {
+            title: "产品服务",
+            children: [
+              { title: "NB-IoT开发套件", link: "/productservice/nb" },
+              { title: "MQTT开发套件", link: "/productservice/mqtt" },
+              { title: "OneNET开发板", link: "/productservice/board" },
+              { title: "中移和物", link: "/productservice/hewu" },
+              { title: "视频能力", link: "/productservice/video" },
+              { title: "OneNET AI", link: "/productservice/ai" }
+            ]
+          },
+          {
+            title: "解决方案",
+            children: [
+              { title: "城市消防解决方案", link: "/solution/cityfire" },
+              {
+                title: "畜牧物联网解决方案",
+                link: "/solution/animalhusbandry"
+              },
+              { title: "智慧停车解决方案", link: "/solution/smartparking" },
+              { title: "智慧井盖解决方案", link: "/solution/manholecover" },
+              { title: "智慧餐厅解决方案", link: "/solution/smartrestaurant" },
+              { title: "智慧路灯解决方案", link: "/solution/smartstreetlight" },
+              {
+                title: "智慧光伏解决方案",
+                link: "/solution/smartphotovoltaic"
+              },
+              { title: "共享经济解决方案", link: "/solution/sharingeconomy" },
+              { title: "光交箱监控解决方案", link: "/solution/lightbox" },
+              { title: "扬尘监控解决方案", link: "/solution/dustmonitoring" }
+            ]
+          },
+          {
+            title: "开发文档",
+            link: "/doc",
+            isNoExternal: true
+          },
+          {
+            title: "物联工场",
+            children: [
+              { title: "活动", link: "/factory/activity" },
+              { title: "资讯", link: "/factory/news" },
+              { title: "创客工坊", link: "/factory/appSquare" },
+              { title: "社区", link: "/bbs", isNoExternal: true }
+            ]
+          },
+          { title: "生态市场", link: "/ocp/h5", isNoExternal: true }
+        ],
+        hmtList: {
+            header_0: ['Portal_bar_Ddoc', '开发文档', '门户导航栏开发文档'],
+            header_1: ['Portal_bar_WLGC', '物联工厂', '门户导航栏物联工厂'],
+            header_2: ['Portal_bar_service', '产品服务', '门户导航栏产品服务_MQTT开发套件'],
+            header_3: ['Portal_bar_service', '产品服务', '门户导航栏产品服务_NB-IoT开发套件'],
+            header_4: ['Portal_bar_service', '产品服务', '门户导航栏产品服务_OneNET开发板'],
+            header_5: ['Portal_bar_service', '产品服务', '门户导航栏产品服务_中移和物'],
+            header_6: ['Portal_bar_service', '产品服务', '门户导航栏产品服务_轻应用平台'],
+            header_7: ['Portal_bar_service', '产品服务', '门户导航栏产品服务_视频能力'],
+            header_8: ['Portal_bar_solution', '解决方案', '门户导航栏解决方案_城市消防'],
+            header_9: ['Portal_bar_solution', '解决方案', '门户导航栏解决方案_畜牧物联网'],
+            header_10: ['Portal_bar_solution', '解决方案', '门户导航栏解决方案_智慧停车'],
+            header_11: ['Portal_bar_solution', '解决方案', '门户导航栏解决方案_智能井盖'],
+            header_12: ['Portal_bar_solution', '解决方案', '门户导航栏解决方案_智慧餐厅'],
+            header_13: ['Portal_bar_solution', '解决方案', '门户导航栏解决方案_智慧路灯'],
+            header_14: ['Portal_bar_solution', '解决方案', '门户导航栏解决方案_智慧光伏'],
+            header_15: ['Portal_bar_solution', '解决方案', '门户导航栏解决方案_共享经济'],
+            header_16: ['Portal_bar_solution', '解决方案', '门户导航栏解决方案_光交箱监控'],
+            header_17: ['Portal_bar_solution', '解决方案', '门户导航栏解决方案_扬尘监控'],
+            header_18: ['Portal_bar_service', '产品服务', '门户导航栏产品服务_OneNETAI'], //导航合作伙伴OCP计划
+            header_19: ['Portal_bar_product', '开发者中心', '门户导航栏开发者中心'],
+            header_36: ['Portal_bar_partner', '合作伙伴', '门户导航栏合作伙伴OCP'] //导航合作伙伴产业联盟
+        },
+        $menuBody: $('.menu-wrapper'),
+        init: function() {
+            _common.bindEvents();
+            _common.bindOthers();
+            _common.showIsPc();
+            $('#copyright-year').html(new Date().getFullYear());
+        },
+        IsPC: function() {
+            var userAgentInfo = navigator.userAgent;
+            var Agents = ["Android", "iPhone",
+                        "SymbianOS", "Windows Phone",
+                        "iPad", "iPod"];
+            var flag = true;
+            for (var v = 0; v < Agents.length; v++) {
+                if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        },
+        showIsPc(){
+            if(window.screen.availWidth<=780&&!this.IsPC()){
+                $('.h5-header').css('display', 'flex');
+                $('.footer-wrapper').css('display', 'block');
+                $('.container').css('min-width', '100%');
+                $('.gb-page-body').css('min-width', '100%');
+                $('.gb-page-wrapper').css('padding-bottom', '700px');
+                $('.container>.row>.col-md-3').css({'padding-left':'15px', 'width': '100%'});
+                $('.container>.row>.col-md-9').css('padding','0 15px');
+                this.addMenu();
+            }else{
+                $('.header').css('display', 'block');
+                $('.footer').css('display', 'block');
+                $('.suspension').css('display', 'block');
+            }
+        },
+        addMenu: function(){
+            var $menuList = this.$menuBody.find('.menu-content-wrapper');
+            for(var i =0;i<this.menus.length;i++){
+                var thisItem = this.menus[i];
+                if(thisItem.children && thisItem.children.length>0){
+                    var html = '<div><div class="menu-level-1 has-sub"><span>'+thisItem.title+'</span><i class="iconfont icon-thin-arrow-right"></i></div><div class="menu-level-2-wrapper">';
+                    for(var j = 0; j<thisItem.children.length;j++){
+                        var subMenu = thisItem.children[j];
+                        html+='<a class="menu-level-2" href="'+(subMenu.isNoExternal ? subMenu.link : this.baseUrl + subMenu.link)+'"><span>'+subMenu.title+'</span><i class="iconfont icon-thin-arrow-right"></i></a>'
+                    }
+                    html+='</div></div>'
+                    $menuList.append(html);
+                }else{
+                    $menuList.append('<a class="menu-level-1" href="'+ (thisItem.isNoExternal ? thisItem.link : this.baseUrl + thisItem.link) +'"><span>'+thisItem.title+'</span></a>');
+                }
+            }
+        },
+        toggleClass: function(dom, targetClass) {
+            let oldClass = dom.className;
+            if (oldClass.indexOf(targetClass) !== -1) {
+                dom.className = oldClass.replace(
+                new RegExp("(\\s+|^)" + targetClass + "(\\s+|$)"),
+                " "
+                );
+            } else {
+                dom.className = oldClass + " " + targetClass;
+            }
+        },
+        bindEvents: function(){
+            $(window).on('scroll', function (e) {
+                var scrollY = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
+                if (scrollY > 100) {
+                    $('.suspension-bottom').show();
+                } else {
+                    $('.suspension-bottom').hide();
+                }
+            });
+            $('.suspension-bottom').on('click', function (e) {
+                e.preventDefault();
+                $("html,body").animate({ scrollTop: 0 }, 500)
+            });
+            var _this = this, $input = $('#book-search-input input'), $showInput = $('.book-search input');
+            $('.search-label').on('click', function(){
+                var $this = $(this);
+                $showInput.val($this.html());
+                $input.val($this.html()).trigger('keyup');
+            });
+
+            $showInput.keyup(function(){
+                if(event.keyCode==13){
+                    $input.val($showInput.val()).trigger('keyup');
+                }
+            });
+            $('#book-search-button').on('click', function(){
+                $input.val($showInput.val()).trigger('keyup');
+            });
+            // 导航鼠标移动动画------begin
+            $('.header-user-head-body').on('click', function () {
+                var $body = $('.h-u-h-c-b');
+                if ($body.hasClass('show')) {
+                    $body.removeClass('show');
+                } else {
+                    $body.addClass('show');
+                }
+            });
+            // 导航鼠标移动动画------end
+            $('[data-hmt-type]').on('click', function () { 
+                _this.pushHmt($(this), _this);
+                return true;
+            });
+            $('.menu-icon').on('click', function(){
+                _this.$menuBody.addClass('show');
+                $('body').css('overflow','hidden');
+            })
+            $('.close-icon').on('click', function(){
+                _this.$menuBody.removeClass('show');
+                $('body').css('overflow','inherit');
+            });
+            $('.menu-content-wrapper').on('click', function(e){
+                let target = e.target;
+                if ($(target).parent()[0].className.indexOf("has-sub") || target.className.indexOf("has-sub")) {
+                    var currentTarget = target.tagName == 'DIV' ? target : $(target).parent()[0];
+                    _this.toggleClass(currentTarget, "menu-open");
+                    _this.toggleClass(currentTarget.nextElementSibling, "show");
+                }
+            })
+        },
+        pushHmt: function ($item, _this) {
+            var dataType = $item.data('hmt-type');
+            var hmtData = _this.hmtList[dataType];
+            if (hmtData) { 
+                _hmt.push(['_trackEvent', hmtData[0], hmtData[1], hmtData[2] + (_this.hmtAddContent.indexOf(dataType) >= 0 ? $item.html() : '')]);
+            }
+        },
+        bindOthers: function(){
+            $('body').on('click', '.list-group-item-nav', function(){
+                var $body = $(this).find('+.child-nav-body');
+                if($body.hasClass('open')){
+                    $body.removeClass('open');
+                    $(this).find('.show').removeClass('octicon-chevron-down').addClass('octicon-chevron-right');
+                }else{
+                    $body.addClass('open');
+                    $(this).find('.show').removeClass('octicon-chevron-right').addClass('octicon-chevron-down');
+                }
+            })
+        }
+    }
+    _common.init();
+</script>
+<script>
+    $('.book-page-inner h1,.book-page-inner h2,.book-page-inner h3,.book-page-inner h4,.book-page-inner h5,.book-page-inner h6').click(function(){
+        var id = $(this).attr('id');
+        if(id) {
+            window.location.hash=id;
+        }
+    });
+</script>
+{% endblock %}
